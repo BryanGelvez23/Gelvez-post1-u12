@@ -13,8 +13,9 @@ RUN mvn clean package -DskipTests -q
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-# Usuario no root: buena práctica de seguridad en contenedores
-RUN addgroup -S spring && adduser -S spring -G spring
+# Usuario no root con carpeta de logs propia
+RUN addgroup -S spring && adduser -S spring -G spring \
+    && mkdir -p /app/logs && chown -R spring:spring /app
 USER spring
 
 # Copiar únicamente el JAR compilado desde la etapa de builder
