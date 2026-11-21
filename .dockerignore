@@ -1,0 +1,9 @@
+target/
+logs/
+capturas/
+.git/
+.github/
+.idea/
+*.iml
+.mvn/
+*.md
